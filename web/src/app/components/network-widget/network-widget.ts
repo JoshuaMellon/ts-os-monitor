@@ -7,11 +7,11 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { SystemStore } from "../../services/systemStore.service";
 
 @Component({
-    selector: "app-memory-widget",
+    selector: "app-network-widget",
     imports: [CommonModule, MatCardModule, MatTabsModule],
-    templateUrl: "./memory-widget.html",
-    styleUrl: "./memory-widget.scss",
+    templateUrl: "./network-widget.html",
+    styleUrls: ["./network-widget.scss"],
 })
-export class MemoryWidget {
+export class NetworkWidget {
     readonly system = inject(SystemStore);
 }

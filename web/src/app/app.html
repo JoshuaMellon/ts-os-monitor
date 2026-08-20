@@ -2,4 +2,14 @@
     <app-cpu-widget></app-cpu-widget>
     <app-machine-widget></app-machine-widget>
     <app-memory-widget></app-memory-widget>
+    <app-network-widget></app-network-widget>
+    <app-disk-widget></app-disk-widget>
+    <app-graphics-widget></app-graphics-widget>
+    <app-usb-widget></app-usb-widget>
+
+    @if (system.bluetooth()?.devices?.length) {
+    <app-bluetooth-widget></app-bluetooth-widget>
+    } @if (system.battery()?.hasBattery) {
+    <app-battery-widget></app-battery-widget>
+    }
 </div>

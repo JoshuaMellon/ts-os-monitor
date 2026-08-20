@@ -1,0 +1,19 @@
+@let usb = system.usb();
+
+<mat-card class="usb-widget widget">
+    <mat-card-header>
+        <mat-card-title>USB</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="usb-list">
+        @for (device of usb!.devices; track device.id) {
+        <mat-card class="usb-item-card">
+            <div class="usb-info">
+                <span>Name: {{ device.name }}</span>
+                <span>Type: {{ device.type }}</span>
+                <span>Vendor: {{ device.vendor }}</span>
+                <span>Manufacturer: {{ device.manufacturer }}</span>
+            </div>
+        </mat-card>
+        }
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,33 @@
+@let disks = system.disks();
+
+<mat-card class="disk-widget widget">
+    <mat-card-header>
+        <mat-card-title>Disks</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-tab-group>
+            <mat-tab label="Overview">
+                <div class="disk-info">
+                    <span>Total Disks: {{ disks!.totalDisks }}</span>
+                    <span>Total Size: {{ disks!.totalSize }} GB</span>
+                    <span>Used: {{ disks!.totalUsed }} GB / {{ disks!.totalUsedPercentage }}%</span>
+                    <span>Available: {{ disks!.totalAvailable }} GB / {{ disks!.totalAvailablePercentage }}%</span>
+                </div>
+            </mat-tab>
+            <mat-tab label="Disks">
+                @for (disk of disks!.disks; track disk.mount) {
+                <mat-card class="disk-item-card">
+                    <div class="disk-info">
+                        <span>Mount: {{ disk.mount }}</span>
+                        <span>Type: {{ disk.type }}</span>
+                        <span>Size: {{ disk.size }} GB</span>
+                        <span>Used: {{ disk.used }} GB / {{ disk.usedPercentage }}%</span>
+                        <span>Available: {{ disk.available }} GB / {{ disk.availablePercentage }}%</span>
+                        <span>Read/Write: {{ disk.rw ? 'RW' : 'RO' }}</span>
+                    </div>
+                </mat-card>
+                }
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+</mat-card>

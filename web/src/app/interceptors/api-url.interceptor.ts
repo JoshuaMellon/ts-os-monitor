@@ -5,8 +5,9 @@ export const apiUrlInterceptor: HttpInterceptorFn = (req, next) => {
         return next(req);
     }
 
+    // Use the page's own hostname so the API is reachable from other devices on the network, not just localhost.
     const apiRequest = req.clone({
-        url: `http://localhost:3000/api${req.url}`,
+        url: `http://${window.location.hostname}:3000/api${req.url}`,
     });
 
     return next(apiRequest);

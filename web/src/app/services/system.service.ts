@@ -17,7 +17,7 @@ import type { BatteryInfo } from "../../../../api/system/modules/battery/types.t
 export class SystemService {
     private readonly http = inject(HttpClient);
 
-    private readonly baseUrl = "http://localhost:3000/api/system";
+    private readonly baseUrl = "/system";
 
     getMachine() {
         return this.http.get<MachineInfo>(`${this.baseUrl}/machine`);

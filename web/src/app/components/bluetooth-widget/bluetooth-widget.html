@@ -1,0 +1,21 @@
+@let bluetooth = system.bluetooth();
+
+<mat-card class="bluetooth-widget widget">
+    <mat-card-header>
+        <mat-card-title>Bluetooth</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="bluetooth-list">
+        @for (device of bluetooth!.devices; track device.macDevice) {
+        <mat-card class="bluetooth-item-card">
+            <div class="bluetooth-info">
+                <span>Name: {{ device.name }}</span>
+                <span>Type: {{ device.type }}</span>
+                <span>Connected: {{ device.connected ? 'Yes' : 'No' }}</span>
+                @if (device.batteryPercent !== null) {
+                <span>Battery: {{ device.batteryPercent }}%</span>
+                }
+            </div>
+        </mat-card>
+        }
+    </mat-card-content>
+</mat-card>

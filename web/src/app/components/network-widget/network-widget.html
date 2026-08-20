@@ -1,0 +1,37 @@
+@let network = system.network();
+
+<mat-card class="network-widget widget">
+    <mat-card-header>
+        <mat-card-title>Network</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-tab-group>
+            <mat-tab label="Interfaces">
+                @for (iface of network!.interfaces; track iface.iface) {
+                <mat-card class="network-item-card">
+                    <div class="network-info">
+                        <span>Name: {{ iface.ifaceName }}</span>
+                        <span>State: {{ iface.operstate }}</span>
+                        <span>IPv4: {{ iface.ip4 }}</span>
+                        <span>IPv6: {{ iface.ip6 }}</span>
+                        <span>MAC: {{ iface.mac }}</span>
+                        <span>Type: {{ iface.type }}</span>
+                    </div>
+                </mat-card>
+                }
+            </mat-tab>
+            <mat-tab label="Stats">
+                @for (stat of network!.stats; track stat.iface) {
+                <mat-card class="network-item-card">
+                    <div class="network-info">
+                        <span>Interface: {{ stat.iface }}</span>
+                        <span>State: {{ stat.operstate }}</span>
+                        <span>Rx: {{ stat.rxSec }} B/s</span>
+                        <span>Tx: {{ stat.txSec }} B/s</span>
+                    </div>
+                </mat-card>
+                }
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+</mat-card>
