@@ -1,30 +1,28 @@
 @let cpu = system.cpu();
 
-<div class="widget-container">
-    <mat-card class="cpu-widget widget">
-        <mat-card-header>
-            <mat-card-title>CPU </mat-card-title>
-            <mat-card-subtitle>{{ cpu!.manufacturer }} - {{ cpu!.brand.replace('Processor', '') }}</mat-card-subtitle>
-        </mat-card-header>
+<mat-card class="cpu-widget widget">
+    <mat-card-header>
+        <mat-card-title>CPU </mat-card-title>
+        <mat-card-subtitle>{{ cpu!.manufacturer }} - {{ cpu!.brand.replace('Processor', '') }}</mat-card-subtitle>
+    </mat-card-header>
 
-        <mat-card-content>
-            <div class="cpu-info">
-                <span> Overall Usage: {{ cpu!.cpuLoad.avg }}% </span>
-                <span> Cores: {{ cpu!.cpuLoad.cores.length }} </span>
-                <span> Speed: {{ cpu!.speed }} GHz </span>
-                <span> Socket: {{ cpu!.socket }} </span>
-            </div>
+    <mat-card-content>
+        <div class="cpu-info">
+            <span> Overall Usage: {{ cpu!.cpuLoad.avg }}% </span>
+            <span> Cores: {{ cpu!.cpuLoad.cores.length }} </span>
+            <span> Speed: {{ cpu!.speed }} GHz </span>
+            <span> Socket: {{ cpu!.socket }} </span>
+        </div>
 
-            <mat-card class="cpu-cores-card">
-                <div class="cores-grid">
-                    @for (core of cpu!.cpuLoad.cores; track $index) {
-                    <div class="core">
-                        <span>Core {{ $index + 1 }}:</span>
-                        <span>{{ core }}%</span>
-                    </div>
-                    }
+        <mat-card class="cpu-cores-card">
+            <div class="cores-grid">
+                @for (core of cpu!.cpuLoad.cores; track $index) {
+                <div class="core">
+                    <span>Core {{ $index + 1 }}:</span>
+                    <span>{{ core }}%</span>
                 </div>
-            </mat-card>
-        </mat-card-content>
-    </mat-card>
-</div>
+                }
+            </div>
+        </mat-card>
+    </mat-card-content>
+</mat-card>

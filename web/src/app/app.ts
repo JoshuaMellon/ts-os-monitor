@@ -1,12 +1,12 @@
 import { Component, signal, DestroyRef } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
 import { SystemStore } from "./services/systemStore.service";
 import { inject } from "@angular/core";
 import { CpuWidget } from "./components/cpu-widget/cpu-widget";
+import { MachineWidget } from "./components/machine-widget/machine-widget";
 
 @Component({
     selector: "app-root",
-    imports: [CpuWidget],
+    imports: [CpuWidget, MachineWidget],
     templateUrl: "./app.html",
     styleUrls: ["./app.scss"],
 })

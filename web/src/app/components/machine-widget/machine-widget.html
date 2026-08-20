@@ -1,0 +1,22 @@
+@let machine = system.machine(); @let user = machine!.userInfo;
+
+<mat-card class="machine-widget widget">
+    <mat-card-header>
+        <mat-card-title>Machine</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="machine-info">
+        <span>Hostname: {{ machine!.hostname }}</span>
+        <span>Platform: {{ machine!.platform }}</span>
+        <span>Arch: {{ machine!.arch }}</span>
+        <span>Type: {{ machine!.type }}</span>
+        <span>Uptime: {{ machine!.uptime }} seconds</span>
+        <span>Boot Time: {{ machine!.bootTime | date: 'medium' }}</span>
+
+        <span>Username: {{ user!.username }}</span>
+        <span>Home Directory: {{ user!.homedir }}</span>
+        @if (user!.shell) {
+        <span>Shell: {{ user!.shell }}</span>
+        }
+    </mat-card-content>
+</mat-card>
