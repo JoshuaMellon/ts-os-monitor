@@ -26,3 +26,7 @@ export function formatUptime(uptime: number): Uptime {
         seconds,
     } as Uptime;
 }
+
+export function mbToGb(mb: number): number {
+    return (mb / 1024).toFixed(2) as unknown as number;
+}

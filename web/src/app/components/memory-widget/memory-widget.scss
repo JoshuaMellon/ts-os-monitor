@@ -1,3 +1,14 @@
 .memory-tab {
     padding: 8px 0;
 }
+
+.memory-progress-bar {
+    height: 8px;
+    border-radius: 4px;
+    --mdc-linear-progress-track-height: 8px;
+    --mdc-linear-progress-active-indicator-height: 8px;
+}
+
+.memory-progress-spinner {
+    flex-shrink: 0;
+}

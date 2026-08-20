@@ -11,31 +11,20 @@
                 <div class="stat-grid memory-tab">
                     <div class="stat">
                         <span class="label">Total</span>
-                        <span class="value">{{ memory!.total }} Mb</span>
+                        <span class="value">{{ mbToGb(memory!.total) }} Gb</span>
                     </div>
-                    <div class="stat">
-                        <span class="label">Free</span>
-                        <span class="value">{{ memory!.free }} Mb / {{ memory!.freePercent }}%</span>
-                    </div>
-                    <div class="stat">
-                        <span class="label">Used</span>
-                        <span class="value">{{ memory!.used }} Mb / {{ memory!.usedPercent }}%</span>
-                    </div>
-                    <div class="stat">
-                        <span class="label">Active</span>
-                        <span class="value">{{ memory!.active }} Mb / {{ memory!.activePercent }}%</span>
-                    </div>
+
                     <div class="stat">
                         <span class="label">Swap Total</span>
-                        <span class="value">{{ memory!.swapTotal }} Mb</span>
+                        <span class="value">{{ mbToGb(memory!.swapTotal) }} Gb</span>
                     </div>
                     <div class="stat">
                         <span class="label">Swap Used</span>
-                        <span class="value">{{ memory!.swapUsed }} Mb</span>
+                        <span class="value">{{ mbToGb(memory!.swapUsed) }} Gb</span>
                     </div>
                     <div class="stat">
                         <span class="label">Swap Free</span>
-                        <span class="value">{{ memory!.swapFree }} Mb</span>
+                        <span class="value">{{ mbToGb(memory!.swapFree) }} Gb</span>
                     </div>
                     @if (memory!.writeBack) {
                     <div class="stat">
@@ -49,41 +38,87 @@
                     </div>
                     }
                 </div>
+                <div class="stat">
+                    <div class="stat-usage-header">
+                        <div class="stat-usage-text">
+                            <span class="label">Free</span>
+                            <span class="value">{{ mbToGb(memory!.free) }} Gb / {{ memory!.freePercent }}%</span>
+                        </div>
+                        <mat-progress-spinner
+                            class="memory-progress-spinner"
+                            mode="determinate"
+                            [diameter]="44"
+                            [strokeWidth]="4"
+                            [value]="memory!.freePercent"
+                            [color]="memory!.freePercent < 15 ? 'warn' : memory!.freePercent < 30 ? 'accent' : 'primary'"
+                        ></mat-progress-spinner>
+                    </div>
+                    <mat-progress-bar
+                        class="memory-progress-bar"
+                        mode="determinate"
+                        [value]="memory!.freePercent"
+                        [color]="memory!.freePercent < 15 ? 'warn' : memory!.freePercent < 30 ? 'accent' : 'primary'"
+                    ></mat-progress-bar>
+                </div>
+                <div class="stat">
+                    <div class="stat-usage-header">
+                        <div class="stat-usage-text">
+                            <span class="label">Used</span>
+                            <span class="value">{{ mbToGb(memory!.used) }} Gb / {{ memory!.usedPercent }}%</span>
+                        </div>
+                        <mat-progress-spinner
+                            class="memory-progress-spinner"
+                            mode="determinate"
+                            [diameter]="44"
+                            [strokeWidth]="4"
+                            [value]="memory!.usedPercent"
+                            [color]="memory!.usedPercent > 85 ? 'warn' : memory!.usedPercent > 70 ? 'accent' : 'primary'"
+                        ></mat-progress-spinner>
+                    </div>
+                    <mat-progress-bar
+                        class="memory-progress-bar"
+                        mode="determinate"
+                        [value]="memory!.usedPercent"
+                        [color]="memory!.usedPercent > 85 ? 'warn' : memory!.usedPercent > 70 ? 'accent' : 'primary'"
+                    ></mat-progress-bar>
+                </div>
             </mat-tab>
             <mat-tab label="Layout">
-                @for (stick of memory!.memoryLayout; track $index) {
-                <div class="item-card">
-                    <div class="stat-grid">
-                        <div class="stat stat--sm">
-                            <span class="label">Bank</span>
-                            <span class="value">{{ stick.bank }}</span>
+                <mat-tab-group class="nested-tab-group">
+                    @for (stick of memory!.memoryLayout; track $index; let i = $index) {
+                    <mat-tab [label]="'Stick ' + (i + 1)">
+                        <div class="stat-grid">
+                            <div class="stat stat--sm">
+                                <span class="label">Bank</span>
+                                <span class="value">{{ stick.bank }}</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">Size</span>
+                                <span class="value">{{ stick.size }} GB</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">Type</span>
+                                <span class="value">{{ stick.type }}</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">Form Factor</span>
+                                <span class="value">{{ stick.formFactor }}</span>
+                            </div>
+                            @if (stick.manufacturer) {
+                            <div class="stat stat--sm">
+                                <span class="label">Manufacturer</span>
+                                <span class="value">{{ stick.manufacturer }}</span>
+                            </div>
+                            } @if (stick.voltageConfigured) {
+                            <div class="stat stat--sm">
+                                <span class="label">Voltage</span>
+                                <span class="value">{{ stick.voltageConfigured }}V</span>
+                            </div>
+                            }
                         </div>
-                        <div class="stat stat--sm">
-                            <span class="label">Size</span>
-                            <span class="value">{{ stick.size }} GB</span>
-                        </div>
-                        <div class="stat stat--sm">
-                            <span class="label">Type</span>
-                            <span class="value">{{ stick.type }}</span>
-                        </div>
-                        <div class="stat stat--sm">
-                            <span class="label">Form Factor</span>
-                            <span class="value">{{ stick.formFactor }}</span>
-                        </div>
-                        @if (stick.manufacturer) {
-                        <div class="stat stat--sm">
-                            <span class="label">Manufacturer</span>
-                            <span class="value">{{ stick.manufacturer }}</span>
-                        </div>
-                        } @if (stick.voltageConfigured) {
-                        <div class="stat stat--sm">
-                            <span class="label">Voltage</span>
-                            <span class="value">{{ stick.voltageConfigured }}V</span>
-                        </div>
-                        }
-                    </div>
-                </div>
-                }
+                    </mat-tab>
+                    }
+                </mat-tab-group>
             </mat-tab>
         </mat-tab-group>
     </mat-card-content>

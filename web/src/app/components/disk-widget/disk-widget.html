@@ -27,36 +27,38 @@
                 </div>
             </mat-tab>
             <mat-tab label="Disks">
-                @for (disk of disks!.disks; track disk.mount) {
-                <div class="item-card">
-                    <div class="stat-grid">
-                        <div class="stat stat--sm">
-                            <span class="label">Mount</span>
-                            <span class="value">{{ disk.mount }}</span>
+                <mat-tab-group class="nested-tab-group">
+                    @for (disk of disks!.disks; track disk.mount) {
+                    <mat-tab [label]="disk.mount">
+                        <div class="stat-grid">
+                            <div class="stat stat--sm">
+                                <span class="label">Mount</span>
+                                <span class="value">{{ disk.mount }}</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">Type</span>
+                                <span class="value">{{ disk.type }}</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">Size</span>
+                                <span class="value">{{ disk.size }} GB</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">Used</span>
+                                <span class="value">{{ disk.used }} GB / {{ disk.usedPercentage }}%</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">Available</span>
+                                <span class="value">{{ disk.available }} GB / {{ disk.availablePercentage }}%</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">Read/Write</span>
+                                <span class="value">{{ disk.rw ? 'RW' : 'RO' }}</span>
+                            </div>
                         </div>
-                        <div class="stat stat--sm">
-                            <span class="label">Type</span>
-                            <span class="value">{{ disk.type }}</span>
-                        </div>
-                        <div class="stat stat--sm">
-                            <span class="label">Size</span>
-                            <span class="value">{{ disk.size }} GB</span>
-                        </div>
-                        <div class="stat stat--sm">
-                            <span class="label">Used</span>
-                            <span class="value">{{ disk.used }} GB / {{ disk.usedPercentage }}%</span>
-                        </div>
-                        <div class="stat stat--sm">
-                            <span class="label">Available</span>
-                            <span class="value">{{ disk.available }} GB / {{ disk.availablePercentage }}%</span>
-                        </div>
-                        <div class="stat stat--sm">
-                            <span class="label">Read/Write</span>
-                            <span class="value">{{ disk.rw ? 'RW' : 'RO' }}</span>
-                        </div>
-                    </div>
-                </div>
-                }
+                    </mat-tab>
+                    }
+                </mat-tab-group>
             </mat-tab>
         </mat-tab-group>
     </mat-card-content>

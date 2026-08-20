@@ -75,6 +75,15 @@ body {
     gap: 10px;
 }
 
+// Second-level tab group nested inside a top-level tab (e.g. one tab per array item).
+.nested-tab-group {
+    margin-top: 8px;
+
+    .mat-mdc-tab-header {
+        margin-bottom: 8px;
+    }
+}
+
 .stat {
     display: flex;
     flex-direction: column;
@@ -132,4 +141,19 @@ body {
 .scroll-list {
     max-height: 220px;
     overflow-y: auto;
+}
+
+// Header row for a stat that pairs a label/value with a progress spinner (e.g. usage stats).
+.stat-usage-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.stat-usage-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
 }

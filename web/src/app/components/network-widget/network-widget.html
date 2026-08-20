@@ -7,60 +7,64 @@
     <mat-card-content>
         <mat-tab-group>
             <mat-tab label="Interfaces">
-                @for (iface of network!.interfaces; track iface.iface) {
-                <div class="item-card">
-                    <div class="stat-grid">
-                        <div class="stat stat--sm">
-                            <span class="label">Name</span>
-                            <span class="value">{{ iface.ifaceName }}</span>
+                <mat-tab-group class="nested-tab-group">
+                    @for (iface of network!.interfaces; track iface.iface) {
+                    <mat-tab [label]="iface.ifaceName">
+                        <div class="stat-grid">
+                            <div class="stat stat--sm">
+                                <span class="label">Name</span>
+                                <span class="value">{{ iface.ifaceName }}</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">State</span>
+                                <span class="value">{{ iface.operstate }}</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">IPv4</span>
+                                <span class="value">{{ iface.ip4 }}</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">IPv6</span>
+                                <span class="value">{{ iface.ip6 }}</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">MAC</span>
+                                <span class="value">{{ iface.mac }}</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">Type</span>
+                                <span class="value">{{ iface.type }}</span>
+                            </div>
                         </div>
-                        <div class="stat stat--sm">
-                            <span class="label">State</span>
-                            <span class="value">{{ iface.operstate }}</span>
-                        </div>
-                        <div class="stat stat--sm">
-                            <span class="label">IPv4</span>
-                            <span class="value">{{ iface.ip4 }}</span>
-                        </div>
-                        <div class="stat stat--sm">
-                            <span class="label">IPv6</span>
-                            <span class="value">{{ iface.ip6 }}</span>
-                        </div>
-                        <div class="stat stat--sm">
-                            <span class="label">MAC</span>
-                            <span class="value">{{ iface.mac }}</span>
-                        </div>
-                        <div class="stat stat--sm">
-                            <span class="label">Type</span>
-                            <span class="value">{{ iface.type }}</span>
-                        </div>
-                    </div>
-                </div>
-                }
+                    </mat-tab>
+                    }
+                </mat-tab-group>
             </mat-tab>
             <mat-tab label="Stats">
-                @for (netStat of network!.stats; track netStat.iface) {
-                <div class="item-card">
-                    <div class="stat-grid">
-                        <div class="stat stat--sm">
-                            <span class="label">Interface</span>
-                            <span class="value">{{ netStat.iface }}</span>
+                <mat-tab-group class="nested-tab-group">
+                    @for (netStat of network!.stats; track netStat.iface) {
+                    <mat-tab [label]="netStat.iface">
+                        <div class="stat-grid">
+                            <div class="stat stat--sm">
+                                <span class="label">Interface</span>
+                                <span class="value">{{ netStat.iface }}</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">State</span>
+                                <span class="value">{{ netStat.operstate }}</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">Rx</span>
+                                <span class="value">{{ netStat.rxSec }} B/s</span>
+                            </div>
+                            <div class="stat stat--sm">
+                                <span class="label">Tx</span>
+                                <span class="value">{{ netStat.txSec }} B/s</span>
+                            </div>
                         </div>
-                        <div class="stat stat--sm">
-                            <span class="label">State</span>
-                            <span class="value">{{ netStat.operstate }}</span>
-                        </div>
-                        <div class="stat stat--sm">
-                            <span class="label">Rx</span>
-                            <span class="value">{{ netStat.rxSec }} B/s</span>
-                        </div>
-                        <div class="stat stat--sm">
-                            <span class="label">Tx</span>
-                            <span class="value">{{ netStat.txSec }} B/s</span>
-                        </div>
-                    </div>
-                </div>
-                }
+                    </mat-tab>
+                    }
+                </mat-tab-group>
             </mat-tab>
         </mat-tab-group>
     </mat-card-content>

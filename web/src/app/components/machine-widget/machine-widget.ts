@@ -1,5 +1,5 @@
 import { Component, inject } from "@angular/core";
-import { formatUptime } from "../../utils/times.utils";
+import { formatUptime } from "../../utils/conversions.utils";
 import { MatCardModule } from "@angular/material/card";
 import { SystemStore } from "../../services/systemStore.service";
 import { MatIconModule } from "@angular/material/icon";
