@@ -2,20 +2,32 @@
 
 <mat-card class="bluetooth-widget widget">
     <mat-card-header>
-        <mat-card-title>Bluetooth</mat-card-title>
+        <mat-card-title><mat-icon class="title-icon">bluetooth</mat-icon>Bluetooth</mat-card-title>
     </mat-card-header>
-    <mat-card-content class="bluetooth-list">
+    <mat-card-content class="scroll-list">
         @for (device of bluetooth!.devices; track device.macDevice) {
-        <mat-card class="bluetooth-item-card">
-            <div class="bluetooth-info">
-                <span>Name: {{ device.name }}</span>
-                <span>Type: {{ device.type }}</span>
-                <span>Connected: {{ device.connected ? 'Yes' : 'No' }}</span>
+        <div class="item-card">
+            <div class="stat-grid">
+                <div class="stat stat--sm">
+                    <span class="label">Name</span>
+                    <span class="value">{{ device.name }}</span>
+                </div>
+                <div class="stat stat--sm">
+                    <span class="label">Type</span>
+                    <span class="value">{{ device.type }}</span>
+                </div>
+                <div class="stat stat--sm">
+                    <span class="label">Connected</span>
+                    <span class="value">{{ device.connected ? 'Yes' : 'No' }}</span>
+                </div>
                 @if (device.batteryPercent !== null) {
-                <span>Battery: {{ device.batteryPercent }}%</span>
+                <div class="stat stat--sm">
+                    <span class="label">Battery</span>
+                    <span class="value">{{ device.batteryPercent }}%</span>
+                </div>
                 }
             </div>
-        </mat-card>
+        </div>
         }
     </mat-card-content>
 </mat-card>
