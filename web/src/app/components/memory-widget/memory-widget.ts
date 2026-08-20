@@ -3,14 +3,12 @@ import { Component, inject } from "@angular/core";
 import { MatCardModule } from "@angular/material/card";
 import { SystemStore } from "../../services/systemStore.service";
 
-import { DatePipe } from "@angular/common";
-
 @Component({
-    selector: "app-machine-widget",
-    imports: [MatCardModule, DatePipe],
-    templateUrl: "./machine-widget.html",
-    styleUrls: ["./machine-widget.scss"],
+    selector: "app-memory-widget",
+    imports: [MatCardModule],
+    templateUrl: "./memory-widget.html",
+    styleUrl: "./memory-widget.scss",
 })
-export class MachineWidget {
+export class MemoryWidget {
     readonly system = inject(SystemStore);
 }

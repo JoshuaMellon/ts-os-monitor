@@ -8,11 +8,11 @@ export async function getMemoryInfo() {
     const memoryInfo = {
         total: bytesToMb(memData.total),
         free: bytesToMb(memData.free),
-        freePercent: parseFloat(((memData.free / memData.total) * 100).toFixed(2)),
+        freePercent: parseFloat(((memData.free / memData.total) * 100).toFixed(1)),
         used: bytesToMb(memData.used),
-        usedPercent: parseFloat(((memData.used / memData.total) * 100).toFixed(2)),
+        usedPercent: parseFloat(((memData.used / memData.total) * 100).toFixed(1)),
         active: bytesToMb(memData.active),
-        activePercent: parseFloat(((memData.active / memData.total) * 100).toFixed(2)),
+        activePercent: parseFloat(((memData.active / memData.total) * 100).toFixed(1)),
 
         swapTotal: bytesToMb(memData.swaptotal),
         swapFree: bytesToMb(memData.swapfree),
