@@ -1,0 +1,25 @@
+.cpu-widget {
+    width: 40vw;
+}
+
+.cpu-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cpu-cores-card {
+    border: 1px solid #ccc;
+}
+
+.cores-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin: 10px;
+}
+
+.core {
+    display: flex;
+    justify-content: space-between;
+}
