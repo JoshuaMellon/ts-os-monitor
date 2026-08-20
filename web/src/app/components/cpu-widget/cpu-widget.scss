@@ -1,5 +1,6 @@
 .cpu-info {
     padding: 12px 0 4px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .cores-grid {
@@ -24,9 +25,20 @@
     }
 }
 
+.cpu-usage-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
 .cpu-progress-bar {
     height: 18px;
     border-radius: 6px;
     --mdc-linear-progress-track-height: 18px;
     --mdc-linear-progress-active-indicator-height: 18px;
+}
+
+.cpu-progress-spinner {
+    flex-shrink: 0;
 }

@@ -10,9 +10,19 @@
             <mat-tab label="Overview">
                 <div class="stat-grid cpu-info">
                     <div class="cpu-usage">
-                        <div class="stat">
-                            <span class="label">Overall Usage</span>
-                            <span class="value">{{ cpu!.cpuLoad.avg }}%</span>
+                        <div class="cpu-usage-header">
+                            <div class="stat">
+                                <span class="label">Overall Usage</span>
+                                <span class="value">{{ cpu!.cpuLoad.avg }}%</span>
+                            </div>
+                            <mat-progress-spinner
+                                class="cpu-progress-spinner"
+                                mode="determinate"
+                                [diameter]="44"
+                                [strokeWidth]="4"
+                                [value]="cpu!.cpuLoad.avg"
+                                [color]="cpu!.cpuLoad.avg > 85 ? 'warn' : cpu!.cpuLoad.avg > 60 ? 'accent' : 'primary'"
+                            ></mat-progress-spinner>
                         </div>
                         <mat-progress-bar
                             class="cpu-progress-bar"
