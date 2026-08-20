@@ -2,21 +2,47 @@
 
 <mat-card class="machine-widget widget">
     <mat-card-header>
-        <mat-card-title>Machine</mat-card-title>
+        <mat-card-title><mat-icon class="title-icon">computer</mat-icon>Machine</mat-card-title>
     </mat-card-header>
 
-    <mat-card-content class="machine-info">
-        <span>Hostname: {{ machine!.hostname }}</span>
-        <span>Platform: {{ machine!.platform }}</span>
-        <span>Arch: {{ machine!.arch }}</span>
-        <span>Type: {{ machine!.type }}</span>
-        <span>Uptime: {{ machine!.uptime }} seconds</span>
-        <span>Boot Time: {{ machine!.bootTime | date: 'medium' }}</span>
-
-        <span>Username: {{ user!.username }}</span>
-        <span>Home Directory: {{ user!.homedir }}</span>
+    <mat-card-content class="stat-grid">
+        <div class="stat">
+            <span class="label">Hostname</span>
+            <span class="value">{{ machine!.hostname }}</span>
+        </div>
+        <div class="stat">
+            <span class="label">Platform</span>
+            <span class="value">{{ machine!.platform }}</span>
+        </div>
+        <div class="stat">
+            <span class="label">Arch</span>
+            <span class="value">{{ machine!.arch }}</span>
+        </div>
+        <div class="stat">
+            <span class="label">Type</span>
+            <span class="value">{{ machine!.type }}</span>
+        </div>
+        <div class="stat">
+            <span class="label">Uptime</span>
+            <span class="value">{{ machine!.uptime }} seconds</span>
+        </div>
+        <div class="stat">
+            <span class="label">Boot Time</span>
+            <span class="value">{{ machine!.bootTime | date: 'medium' }}</span>
+        </div>
+        <div class="stat">
+            <span class="label">Username</span>
+            <span class="value">{{ user!.username }}</span>
+        </div>
+        <div class="stat">
+            <span class="label">Home Directory</span>
+            <span class="value">{{ user!.homedir }}</span>
+        </div>
         @if (user!.shell) {
-        <span>Shell: {{ user!.shell }}</span>
+        <div class="stat">
+            <span class="label">Shell</span>
+            <span class="value">{{ user!.shell }}</span>
+        </div>
         }
     </mat-card-content>
 </mat-card>

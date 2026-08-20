@@ -2,47 +2,87 @@
 
 <mat-card class="memory-widget widget">
     <mat-card-header>
-        <mat-card-title>Memory</mat-card-title>
+        <mat-card-title><mat-icon class="title-icon">memory</mat-icon>Memory</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
         <mat-tab-group>
             <mat-tab label="Overview">
-                <div class="memory-info">
-                    <span>Total: {{ memory!.total }} Mb</span>
-
-                    <span>Free: {{ memory!.free }}Mb / {{ memory!.freePercent }}% </span>
-
-                    <span>Used: {{ memory!.used }}Mb / {{ memory!.usedPercent }}%</span>
-
-                    <span>Active: {{ memory!.active }}Mb / {{ memory!.activePercent }}%</span>
-
-                    <span>Swap Total: {{ memory!.swapTotal }} Mb</span>
-                    <span>Swap Used: {{ memory!.swapUsed }} Mb</span>
-                    <span>Swap Free: {{ memory!.swapFree }} Mb</span>
-
+                <div class="stat-grid memory-tab">
+                    <div class="stat">
+                        <span class="label">Total</span>
+                        <span class="value">{{ memory!.total }} Mb</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Free</span>
+                        <span class="value">{{ memory!.free }} Mb / {{ memory!.freePercent }}%</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Used</span>
+                        <span class="value">{{ memory!.used }} Mb / {{ memory!.usedPercent }}%</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Active</span>
+                        <span class="value">{{ memory!.active }} Mb / {{ memory!.activePercent }}%</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Swap Total</span>
+                        <span class="value">{{ memory!.swapTotal }} Mb</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Swap Used</span>
+                        <span class="value">{{ memory!.swapUsed }} Mb</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Swap Free</span>
+                        <span class="value">{{ memory!.swapFree }} Mb</span>
+                    </div>
                     @if (memory!.writeBack) {
-                    <span>Write Back: {{ memory!.writeBack }} bytes</span>
+                    <div class="stat">
+                        <span class="label">Write Back</span>
+                        <span class="value">{{ memory!.writeBack }} bytes</span>
+                    </div>
                     } @if (memory!.dirty) {
-                    <span>Dirty: {{ memory!.dirty }} bytes</span>
+                    <div class="stat">
+                        <span class="label">Dirty</span>
+                        <span class="value">{{ memory!.dirty }} bytes</span>
+                    </div>
                     }
                 </div>
             </mat-tab>
             <mat-tab label="Layout">
                 @for (stick of memory!.memoryLayout; track $index) {
-                <mat-card class="memory-item-card">
-                    <div class="memory-info">
-                        <span>Bank: {{ stick.bank }}</span>
-                        <span>Size: {{ stick.size }} GB</span>
-                        <span>Type: {{ stick.type }}</span>
-                        <span>Form Factor: {{ stick.formFactor }}</span>
+                <div class="item-card">
+                    <div class="stat-grid">
+                        <div class="stat stat--sm">
+                            <span class="label">Bank</span>
+                            <span class="value">{{ stick.bank }}</span>
+                        </div>
+                        <div class="stat stat--sm">
+                            <span class="label">Size</span>
+                            <span class="value">{{ stick.size }} GB</span>
+                        </div>
+                        <div class="stat stat--sm">
+                            <span class="label">Type</span>
+                            <span class="value">{{ stick.type }}</span>
+                        </div>
+                        <div class="stat stat--sm">
+                            <span class="label">Form Factor</span>
+                            <span class="value">{{ stick.formFactor }}</span>
+                        </div>
                         @if (stick.manufacturer) {
-                        <span>Manufacturer: {{ stick.manufacturer }}</span>
+                        <div class="stat stat--sm">
+                            <span class="label">Manufacturer</span>
+                            <span class="value">{{ stick.manufacturer }}</span>
+                        </div>
                         } @if (stick.voltageConfigured) {
-                        <span>Voltage: {{ stick.voltageConfigured }}V</span>
+                        <div class="stat stat--sm">
+                            <span class="label">Voltage</span>
+                            <span class="value">{{ stick.voltageConfigured }}V</span>
+                        </div>
                         }
                     </div>
-                </mat-card>
+                </div>
                 }
             </mat-tab>
         </mat-tab-group>

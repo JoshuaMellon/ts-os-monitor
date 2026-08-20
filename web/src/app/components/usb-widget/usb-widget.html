@@ -2,18 +2,30 @@
 
 <mat-card class="usb-widget widget">
     <mat-card-header>
-        <mat-card-title>USB</mat-card-title>
+        <mat-card-title><mat-icon class="title-icon">usb</mat-icon>USB</mat-card-title>
     </mat-card-header>
-    <mat-card-content class="usb-list">
+    <mat-card-content class="scroll-list">
         @for (device of usb!.devices; track device.id) {
-        <mat-card class="usb-item-card">
-            <div class="usb-info">
-                <span>Name: {{ device.name }}</span>
-                <span>Type: {{ device.type }}</span>
-                <span>Vendor: {{ device.vendor }}</span>
-                <span>Manufacturer: {{ device.manufacturer }}</span>
+        <div class="item-card">
+            <div class="stat-grid">
+                <div class="stat stat--sm">
+                    <span class="label">Name</span>
+                    <span class="value">{{ device.name }}</span>
+                </div>
+                <div class="stat stat--sm">
+                    <span class="label">Type</span>
+                    <span class="value">{{ device.type }}</span>
+                </div>
+                <div class="stat stat--sm">
+                    <span class="label">Vendor</span>
+                    <span class="value">{{ device.vendor }}</span>
+                </div>
+                <div class="stat stat--sm">
+                    <span class="label">Manufacturer</span>
+                    <span class="value">{{ device.manufacturer }}</span>
+                </div>
             </div>
-        </mat-card>
+        </div>
         }
     </mat-card-content>
 </mat-card>
