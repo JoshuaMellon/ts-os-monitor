@@ -1,0 +1,32 @@
+@let cpu = system.cpu();
+
+<mat-card class="cpu-widget widget">
+    <mat-card-header>
+        <mat-card-title>CPU </mat-card-title>
+        <mat-card-subtitle>{{ cpu!.manufacturer }} - {{ cpu!.brand.replace('Processor', '') }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-tab-group>
+            <mat-tab label="Overview">
+                <div class="cpu-info">
+                    <span> Overall Usage: {{ cpu!.cpuLoad.avg }}% </span>
+                    <span> Cores: {{ cpu!.cpuLoad.cores.length }} </span>
+                    <span> Speed: {{ cpu!.speed }} GHz </span>
+                    <span> Socket: {{ cpu!.socket }} </span>
+                </div>
+            </mat-tab>
+            <mat-tab label="Cores">
+                <mat-card class="cpu-cores-card">
+                    <div class="cores-grid">
+                        @for (core of cpu!.cpuLoad.cores; track $index) {
+                        <div class="core">
+                            <span>Core {{ $index + 1 }}:</span>
+                            <span>{{ core }}%</span>
+                        </div>
+                        }
+                    </div>
+                </mat-card>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+</mat-card>

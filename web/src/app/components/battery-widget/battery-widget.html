@@ -1,0 +1,24 @@
+@let battery = system.battery();
+
+<mat-card class="battery-widget widget">
+    <mat-card-header>
+        <mat-card-title>Battery</mat-card-title>
+    </mat-card-header>
+
+    @if (battery!.hasBattery) {
+    <mat-card-content class="battery-info">
+        <span>Charge: {{ battery!.percent }}%</span>
+        <span>Status: {{ battery!.isCharging ? 'Charging' : 'Discharging' }}</span>
+        <span>AC Connected: {{ battery!.acConnected ? 'Yes' : 'No' }}</span>
+        <span>Cycle Count: {{ battery!.cycleCount }}</span>
+        <span>Time Remaining: {{ battery!.timeRemaining }} min</span>
+        <span>Voltage: {{ battery!.voltage }}V</span>
+        <span>Manufacturer: {{ battery!.manufacturer }}</span>
+        <span>Model: {{ battery!.model }}</span>
+    </mat-card-content>
+    } @else {
+    <mat-card-content>
+        <span>No battery detected</span>
+    </mat-card-content>
+    }
+</mat-card>

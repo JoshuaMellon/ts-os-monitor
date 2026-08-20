@@ -1,4 +1,6 @@
 import express from "express";
+import cors from "cors";
+
 import type { SystemMonitor } from "../system/system.ts";
 import { createSystemRouter } from "./system.ts";
 
@@ -8,6 +10,7 @@ export const createServer = (monitor: SystemMonitor) => {
     const app = express();
 
     app.use(express.json());
+    app.use(cors());
 
     app.use(`${basePath}system`, createSystemRouter(monitor));
 
