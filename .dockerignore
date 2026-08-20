@@ -1,0 +1,12 @@
+# Build context is the repo root; keep the image lean and caches fresh.
+**/.git
+**/.gitignore
+**/.vscode
+**/.angular
+**/node_modules
+**/dist
+**/npm-debug.log
+**/*.md
+web/Dockerfile
+web/compose.yaml
+web/.dockerignore

@@ -1,0 +1,15 @@
+# Combined stack: builds and runs both the API and web containers together.
+services:
+    api:
+        build:
+            context: .
+            dockerfile: api/Dockerfile
+        ports:
+            - 3000:3000
+
+    web:
+        build:
+            context: .
+            dockerfile: web/Dockerfile
+        ports:
+            - 4200:80

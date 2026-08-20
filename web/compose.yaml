@@ -1,0 +1,7 @@
+services:
+    server:
+        build:
+            context: ..
+            dockerfile: web/Dockerfile
+        ports:
+            - 4200:80
