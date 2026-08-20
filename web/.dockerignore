@@ -1,0 +1,2 @@
+# Unused: the Docker build context for this app is the repo root (see
+# compose.yaml), so the real .dockerignore lives at the repository root.
