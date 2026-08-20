@@ -1,11 +1,15 @@
-.cpu-widget {
-    width: 30vw;
-}
-
 .cpu-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 8px 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 12px;
+    font-size: 14px;
+
+    span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }
 
 .cpu-cores-card {
@@ -14,9 +18,10 @@
 
 .cores-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 8px;
     margin: 10px;
+    font-size: 12px;
 }
 
 .core {

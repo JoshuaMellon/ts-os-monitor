@@ -1,9 +1,11 @@
-.memory-widget {
-    width: 30vw;
-}
-
 .memory-info {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px 20px;
+
+    span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }

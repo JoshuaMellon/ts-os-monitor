@@ -1,6 +1,8 @@
 import { Component, signal, DestroyRef } from "@angular/core";
-import { SystemStore } from "./services/systemStore.service";
 import { inject } from "@angular/core";
+
+import { SystemStore } from "./services/systemStore.service";
+
 import { CpuWidget } from "./components/cpu-widget/cpu-widget";
 import { MachineWidget } from "./components/machine-widget/machine-widget";
 import { MemoryWidget } from "./components/memory-widget/memory-widget";
